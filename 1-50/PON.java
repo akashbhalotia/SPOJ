@@ -3,6 +3,22 @@ import java.io.*;
 import java.util.*;
 class H
 {
+    private static long multiply(long a, long x, long mod)
+    {
+        a%=mod;
+        x%=mod;
+        long res=0;
+
+        while(x>0)
+        {
+            if((x&1)==1)
+                res=(res+a)%mod;
+
+            x>>=1;
+            a=(a<<1)%mod;
+        }
+        return res%mod;
+    }
     private static long pow(long a, long x, long mod)
     {
         a%=mod;
@@ -11,10 +27,10 @@ class H
         while(x>0)
         {
             if((x&1)==1)
-                res=(res*a)%mod;
+                res=multiply(res,a,mod)%mod;
 
             x>>=1;
-            a=(a*a)%mod;
+            a=multiply(a,a,mod)%mod;
         }
         return res%mod;
     }
