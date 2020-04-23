@@ -28,21 +28,21 @@ class A
         for(i=1;i<=60;i++) pow[i]=pow[i-1]*2;
 
         ArrayList<Long> list=new ArrayList<>();
-        HashSet<Long> set[]=new HashSet[65];
-        for(i=0;i<=60;i++) set[i]=new HashSet<>();
+        ArrayList<Long> initial[]=new ArrayList[65];
+        for(i=0;i<=60;i++) initial[i]=new ArrayList<>();
 
-        for(i=0;i<N;i++) set[highestBit(a[i])].add(a[i]);
+        for(i=0;i<N;i++) initial[highestBit(a[i])].add(a[i]);
         for(i=60;i>=0;i--)
         {
             boolean flag=false; long first=0;
-            for(long j:set[i])
+            for(long j:initial[i])
             {
                 if(!flag)
                 {
                     first=j; flag=true;
                     list.add(j);
                 }
-                if((first^j)>0) set[highestBit(first^j)].add(first^j);
+                if((first^j)>0) initial[highestBit(first^j)].add(first^j);
             }
         }
 
