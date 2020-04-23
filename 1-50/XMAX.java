@@ -1,6 +1,7 @@
 /*
     https://math.stackexchange.com/questions/48682/maximization-with-xor-operator
     https://www.quora.com/What-are-some-solutions-to-the-SPOJ-XMAX-problem
+    https://www.hackerearth.com/practice/notes/gaussian-elimination/
  */
 
 //created by Whiplash99
@@ -8,11 +9,11 @@ import java.io.*;
 import java.util.*;
 class A
 {
-    private static long[] pow;
     private static int highestBit(long N)
     {
-        for(int i=60;i>=0;i--) if((pow[i]&N)>0) return i;
-        return -1;
+        int pos=-1;
+        while (N>0) {pos++; N>>=1;}
+        return pos;
     }
     public static void main(String[] args) throws IOException
     {
@@ -25,8 +26,6 @@ class A
         for(i=0;i<N;i++) a[i]=r.nextLong();
 
         long ans=0;
-        pow=new long[65]; pow[0]=1;
-        for(i=1;i<=60;i++) pow[i]=pow[i-1]*2;
 
         ArrayList<Long> list=new ArrayList<>();
         ArrayList<Long> initial[]=new ArrayList[65];
@@ -50,8 +49,8 @@ class A
         for(long j:list) if((ans^j)>ans) ans^=j;
         System.out.println(ans);
     }
-    static class Reader
-    {
+    static class Reader 
+    { 
         final private int BUFFER_SIZE = 1 << 16;private DataInputStream din;private byte[] buffer;private int bufferPointer, bytesRead;
         public Reader(){din=new DataInputStream(System.in);buffer=new byte[BUFFER_SIZE];bufferPointer=bytesRead=0;
         }public Reader(String file_name) throws IOException{din=new DataInputStream(new FileInputStream(file_name));buffer=new byte[BUFFER_SIZE];bufferPointer=bytesRead=0;
