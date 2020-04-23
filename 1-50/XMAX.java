@@ -1,5 +1,6 @@
 /*
     https://math.stackexchange.com/questions/48682/maximization-with-xor-operator
+    https://www.quora.com/What-are-some-solutions-to-the-SPOJ-XMAX-problem
  */
 
 //created by Whiplash99
@@ -32,7 +33,7 @@ class A
         for(i=0;i<=60;i++) initial[i]=new ArrayList<>();
 
         for(i=0;i<N;i++) initial[highestBit(a[i])].add(a[i]);
-        for(i=60;i>=0;i--)
+        for(i=60;i>=0;i--) //Gauss elimination
         {
             boolean flag=false; long first=0;
             for(long j:initial[i])
