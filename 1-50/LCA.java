@@ -1,7 +1,7 @@
 //created by Whiplash99
 import java.io.*;
 import java.util.*;
-public class A
+class A
 {
     private static int tin[], tout[], timer=0,N, logN, anc[][];
     private static ArrayDeque<Integer> edge[];
