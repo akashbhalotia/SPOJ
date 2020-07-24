@@ -15,11 +15,9 @@ class A
         long k=1,cnt=0,g;
         while ((g=_gcd(a,m))>1)
         {
-            if(b==k) return cnt;
             if(b%g!=0) return -1;
-
-            b/=g; m/=g; ++cnt;
-            k=(k*a/g)%m;
+            b/=g; m/=g; cnt++; k=(k*a/g)%m;
+            if(b==k) return cnt;
         }
 
         map.clear();
